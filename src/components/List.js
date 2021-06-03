@@ -1,11 +1,13 @@
 import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
 import ListItem from './ListItem'
 
-const List = () => {
+const List = ({ list }) => {
   return (
     <div>
-      <ListItem />
-      <ListItem /> <ListItem /> <ListItem /> <ListItem /> <ListItem />
+      {list.map((listItem) => (
+        <ListItem listItem={listItem} />
+      ))}
     </div>
   )
 }
