@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import ListItem from './ListItem'
 
 const List = ({ list, handleEdit, handleDelete, handleClear }) => {
@@ -10,6 +10,7 @@ const List = ({ list, handleEdit, handleDelete, handleClear }) => {
           listItem={listItem}
           handleEdit={handleEdit}
           handleDelete={handleDelete}
+          key={listItem.id}
         />
       ))}
       <Button variant='danger' onClick={handleClear}>

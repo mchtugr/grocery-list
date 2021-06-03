@@ -21,13 +21,21 @@ const App = () => {
     getGroceryListFromLocalStorage()
   )
   const [isEditing, setIsEditing] = useState(false)
+  const [editItem, setEditItem] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
     //if input is empty, disable submit
     if (!query) return
     // if a current item is edited, update the list
-    if (isEditing) {
+    if (isEditing && query) {
+      setIsEditing(false)
+      let index = groceryList.indexOf(editItem)
+      let newList = [...groceryList]
+      console.log(newList)
+      newList.splice(index, 1, { id: editItem.id, text: query })
+      setGroceryList(newList)
+      setQuery('')
     }
     // if it is a new item, add it to the list
     else {
@@ -38,7 +46,10 @@ const App = () => {
   }
   // edit specific list item
   const handleEdit = (id) => {
-    console.log(id)
+    setIsEditing(true)
+    let editItem = groceryList.find((item) => item.id === id)
+    setEditItem(editItem)
+    setQuery(editItem.text)
   }
   // delete specific list item
   const handleDelete = (id) => {
