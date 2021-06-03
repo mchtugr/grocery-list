@@ -10,7 +10,11 @@ const Message = ({ variant, text, removeAlert }) => {
       clearTimeout(timeout)
     }
   }, [removeAlert])
-  return <Alert variant={variant}>{text}</Alert>
+  return (
+    <Alert variant={variant} className='text-center p-1'>
+      {text}
+    </Alert>
+  )
 }
 
 export default Message

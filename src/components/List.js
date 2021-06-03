@@ -13,9 +13,13 @@ const List = ({ list, handleEdit, handleDelete, handleClear }) => {
           key={listItem.id}
         />
       ))}
-      <Button variant='danger' onClick={handleClear}>
-        Clear All
-      </Button>
+      {list.length > 0 && (
+        <div className='btn-container'>
+          <Button variant='custom' onClick={handleClear} className=' mt-2'>
+            Clear All
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

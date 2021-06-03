@@ -87,44 +87,55 @@ const App = () => {
   }, [groceryList])
 
   return (
-    <Container>
-      <h1 className='text-center'>Grocery List</h1>
-      {/* Alert Screen */}
-      {showAlert && (
-        <Message
-          variant={alertOptions.variant}
-          text={alertOptions.text}
-          removeAlert={removeAlert}
-        />
-      )}
-      <Form onSubmit={handleSubmit}>
-        <Row>
-          <Col xs={11}>
-            <Form.Group controlId='query'>
-              <Form.Control
-                type='text'
-                placeholder='Milk'
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-          </Col>
-          <Col xs={1}>
-            <Button variant='primary' type='submit'>
-              {/* Conditional Render acc to isEditing state */}
-              {isEditing ? 'Edit' : 'Add'}
-            </Button>
-          </Col>
-        </Row>
-      </Form>
-      {/* grocery list screen */}
-      <List
-        list={groceryList}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-        handleClear={handleClear}
-      />
-    </Container>
+    <>
+      <h1 className='text-center m-3'>Grocery List</h1>
+      <Row className='justify-content-center'>
+        <Col
+          xl={5}
+          lg={6}
+          md={8}
+          sm={10}
+          xs={11}
+          className='app-wrapper p-4 rounded'
+        >
+          {/* Alert Screen */}
+          {showAlert && (
+            <Message
+              variant={alertOptions.variant}
+              text={alertOptions.text}
+              removeAlert={removeAlert}
+            />
+          )}
+          <Form onSubmit={handleSubmit}>
+            <Row>
+              <Col xs={10}>
+                <Form.Group controlId='query'>
+                  <Form.Control
+                    type='text'
+                    placeholder='Milk'
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col xs={2}>
+                <Button variant='custom' type='submit'>
+                  {/* Conditional Render acc to isEditing state */}
+                  {isEditing ? 'Edit' : 'Add'}
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+          {/* grocery list screen */}
+          <List
+            list={groceryList}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            handleClear={handleClear}
+          />
+        </Col>
+      </Row>
+    </>
   )
 }
 
