@@ -71,12 +71,13 @@ const App = () => {
     setQuery('')
     handleAlert('danger', 'Cleared all')
   }
-
+  // Sets Message component props
   const handleAlert = (variant, text) => {
     setAlertOptions({ variant, text })
     setShowAlert(true)
   }
 
+  //remove Message component
   const removeAlert = () => {
     setShowAlert(false)
   }
@@ -106,6 +107,7 @@ const App = () => {
               removeAlert={removeAlert}
             />
           )}
+
           <Form onSubmit={handleSubmit}>
             <Row>
               <Col xs={10}>

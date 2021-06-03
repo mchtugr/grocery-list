@@ -13,6 +13,8 @@ const List = ({ list, handleEdit, handleDelete, handleClear }) => {
           key={listItem.id}
         />
       ))}
+
+      {/* If there is a list item, Clear all btn appears */}
       {list.length > 0 && (
         <div className='btn-container'>
           <Button variant='custom' onClick={handleClear} className=' mt-2'>

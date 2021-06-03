@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
 const ListItem = ({ listItem, handleEdit, handleDelete }) => {
+  //cross/uncross the item onClick
   const handleCheck = (id) => {
     const textField = document.getElementById(id)
     if (textField.classList.contains('checked')) {
@@ -24,6 +25,8 @@ const ListItem = ({ listItem, handleEdit, handleDelete }) => {
       >
         {listItem.text}
       </Col>
+
+      {/* Button Container */}
       <Col xs={3} className='icon-container'>
         <FaEdit
           onClick={() => handleEdit(listItem.id)}

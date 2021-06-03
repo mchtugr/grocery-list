@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Alert } from 'react-bootstrap'
 
 const Message = ({ variant, text, removeAlert }) => {
+  //whenever an alert message is displayed, it disappears 1.5 seconds later
   useEffect(() => {
     const timeout = setTimeout(() => {
       removeAlert()
