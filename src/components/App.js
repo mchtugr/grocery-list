@@ -22,6 +22,11 @@ const App = () => {
   )
   const [isEditing, setIsEditing] = useState(false)
   const [editItem, setEditItem] = useState({})
+  const [alertOptions, setAlertOptions] = useState({
+    variant: '',
+    text: '',
+  })
+  const [showAlert, setShowAlert] = useState(true)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -32,16 +37,17 @@ const App = () => {
       setIsEditing(false)
       let index = groceryList.indexOf(editItem)
       let newList = [...groceryList]
-      console.log(newList)
       newList.splice(index, 1, { id: editItem.id, text: query })
       setGroceryList(newList)
       setQuery('')
+      handleAlert('info', 'Item updated')
     }
     // if it is a new item, add it to the list
     else {
       const newItem = { id: `id${new Date().getTime()}`, text: query }
       setGroceryList([...groceryList, newItem])
       setQuery('')
+      handleAlert('success', 'Item added')
     }
   }
   // edit specific list item
@@ -55,11 +61,24 @@ const App = () => {
   const handleDelete = (id) => {
     const filteredList = groceryList.filter((item) => item.id !== id)
     setGroceryList(filteredList)
+    setQuery('')
+    handleAlert('danger', 'Item deleted')
   }
   // clear all list items
   const handleClear = () => {
     localStorage.removeItem('groceryList')
     setGroceryList([])
+    setQuery('')
+    handleAlert('danger', 'Cleared all')
+  }
+
+  const handleAlert = (variant, text) => {
+    setAlertOptions({ variant, text })
+    setShowAlert(true)
+  }
+
+  const removeAlert = () => {
+    setShowAlert(false)
   }
 
   useEffect(() => {
@@ -71,7 +90,13 @@ const App = () => {
     <Container>
       <h1 className='text-center'>Grocery List</h1>
       {/* Alert Screen */}
-      <Message />
+      {showAlert && (
+        <Message
+          variant={alertOptions.variant}
+          text={alertOptions.text}
+          removeAlert={removeAlert}
+        />
+      )}
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col xs={11}>
