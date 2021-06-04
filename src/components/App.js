@@ -89,16 +89,11 @@ const App = () => {
 
   return (
     <>
-      <h1 className='text-center m-3'>Grocery List</h1>
       <Row className='justify-content-center'>
-        <Col
-          xl={5}
-          lg={6}
-          md={8}
-          sm={10}
-          xs={11}
-          className='app-wrapper p-4 rounded'
-        >
+        <h1 className='text-center m-3'>Grocery List</h1>
+      </Row>
+      <Row className='justify-content-center'>
+        <Col xl={5} lg={6} md={8} xs={10} className='app-wrapper p-4 rounded'>
           {/* Alert Screen */}
           {showAlert && (
             <Message
@@ -109,18 +104,17 @@ const App = () => {
           )}
 
           <Form onSubmit={handleSubmit}>
-            <Row>
-              <Col xs={10}>
-                <Form.Group controlId='query'>
-                  <Form.Control
-                    type='text'
-                    placeholder='Milk'
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+            <Row className='center mb-3'>
+              <Col xs={8}>
+                <Form.Control
+                  controlId='query'
+                  type='text'
+                  placeholder='Milk'
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                ></Form.Control>
               </Col>
-              <Col xs={2}>
+              <Col xs={3} className='center'>
                 <Button variant='custom' type='submit'>
                   {/* Conditional Render acc to isEditing state */}
                   {isEditing ? 'Edit' : 'Add'}

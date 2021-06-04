@@ -13,26 +13,26 @@ const ListItem = ({ listItem, handleEdit, handleDelete }) => {
     }
   }
   return (
-    <Row
-      className='border rounded list-item-container'
-      onClick={() => console.log('clicked')}
-    >
+    <Row className='border rounded list-item-container'>
       <Col
+        md={10}
         xs={9}
         id={listItem.id}
-        className='text-capitalize'
+        className='text-capitalize list-item'
         onClick={() => handleCheck(listItem.id)}
       >
         {listItem.text}
       </Col>
 
       {/* Button Container */}
-      <Col xs={3} className='icon-container'>
+      <Col md={2} xs={3} className='icon-container align-middle'>
         <FaEdit
+          size='1.2rem'
           onClick={() => handleEdit(listItem.id)}
           className='icon edit-icon'
         />
         <FaTrash
+          size='1.2rem'
           onClick={() => handleDelete(listItem.id)}
           className='icon delete-icon'
         />
