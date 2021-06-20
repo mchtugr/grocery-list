@@ -17,7 +17,7 @@ const List = ({ list, handleEdit, handleDelete, handleClear }) => {
       {/* If there is a list item, Clear all btn appears */}
       {list.length > 0 && (
         <div className='btn-container'>
-          <Button variant='custom' onClick={handleClear} className=' mt-2'>
+          <Button variant='danger' onClick={handleClear} className=' mt-2'>
             Clear All
           </Button>
         </div>
