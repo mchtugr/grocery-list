@@ -26,16 +26,20 @@ const ListItem = ({ listItem, handleEdit, handleDelete }) => {
 
       {/* Button Container */}
       <Col md={2} xs={3} className='icon-container align-middle'>
-        <FaEdit
-          size='1.2rem'
-          onClick={() => handleEdit(listItem.id)}
-          className='icon edit-icon'
-        />
-        <FaTrash
-          size='1.2rem'
-          onClick={() => handleDelete(listItem.id)}
-          className='icon delete-icon'
-        />
+        <div className='mr-1'>
+          <FaEdit
+            size='1.2rem'
+            onClick={() => handleEdit(listItem.id)}
+            className='icon edit-icon'
+          />
+        </div>
+        <div className='ml-1'>
+          <FaTrash
+            size='1.2rem'
+            onClick={() => handleDelete(listItem.id)}
+            className='icon delete-icon'
+          />
+        </div>
       </Col>
     </Row>
   )
