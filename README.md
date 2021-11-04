@@ -1,4 +1,4 @@
-# You can preview the app [here](https://murtazaaylak.github.io/grocery-list/)
+# You can preview the app [here](https://mchtugr.github.io/grocery-list/)
 
 # Getting Started with Create React App
 
